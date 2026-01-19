@@ -1,0 +1,67 @@
+{
+  "name": "inter-mediator/imapp-template",
+  "version": "2",
+  "time": "2024-01-13",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/INTER-Mediator/IMApp-template.git"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=7.4.0",
+    "inter-mediator/inter-mediator": "dev-master"
+  },
+  "autoload": {},
+  "description": "INTER-Mediator Application Template.",
+  "type": "application",
+  "keywords": [
+    "INTER-Mediator",
+    "application"
+  ],
+  "homepage": "https://inter-mediator.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "INTER-Mediator Directive Committee",
+      "homepage": "http://inter-mediator.org/"
+    }
+  ],
+  "support": {
+    "source": "https://github.com/INTER-Mediator/IMApp-template",
+    "manual": "http://inter-mediator.info/"
+  },
+  "scripts": {
+    "test": [
+      "The software test is very important activity for the quality assuarance."
+    ],
+    "clear": [
+      "rm -rf vendor",
+      "cd ./vendor/inter-mediator/inter-mediator && rm -rf node_module"
+    ],
+    "clean": [
+      "rm -rf vendor",
+      "cd ./vendor/inter-mediator/inter-mediator && rm -rf node_module"
+    ],
+    "post-update-cmd": [
+      "cd ./vendor/inter-mediator/inter-mediator; npm install",
+      "cd ./vendor/inter-mediator/inter-mediator; npm update",
+      "./vendor/inter-mediator/inter-mediator/dist-docs/generateminifyjshere.sh",
+      "./lib/doafterupdate.sh"
+    ],
+    "post-install-cmd": [
+      "cd ./vendor/inter-mediator/inter-mediator; npm install",
+      "./vendor/inter-mediator/inter-mediator/dist-docs/generateminifyjshere.sh",
+      "./lib/doafterinstall.sh"
+    ]
+  },
+  "config": {
+    "allow-plugins": {
+      "simplesamlphp/composer-module-installer": true,
+      "simplesamlphp/composer-xmlprovider-installer": true,
+      "mouf/nodejs-installer": true
+    }
+  }
+}

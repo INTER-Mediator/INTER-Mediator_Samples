@@ -1,0 +1,22 @@
+#funcpanel {
+    position: fixed;
+    background-color: #FFFFFF7F;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    z-index: 4999;
+    display: none;
+}
+
+#panelcontent {
+    position: absolute;
+    background-color: #d3d3d3FF;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    padding: 12px;
+}

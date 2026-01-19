@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+/*
+ * INTER-Mediator
+ * Copyright (c) INTER-Mediator Directive Committee (http://inter-mediator.org)
+ * This project started at the end of 2009 by Masayuki Nii msyk@msyk.net.
+ *
+ * INTER-Mediator is supplied under MIT License.
+ * Please see the full license for details:
+ * https://github.com/INTER-Mediator/INTER-Mediator/blob/master/dist-docs/License.txt
+ */  -->
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <title>Embryo Browser</title>
+    <!-- Loading JQuery -->
+    <script src="../vendor/inter-mediator/inter-mediator/node_modules/jquery/dist/jquery.min.js"></script> <!-- Don't use 'slim' -->
+    <!-- Loading Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Loading INTER-Mediator -->
+    <script src="accounts.php"></script>
+    <script src="accounts.js?202305191300"></script>
+    <link rel="stylesheet" href="../lib/css/default.css">
+</head>
+<body>
+<div id="nonsupportmessage">
+    <div style="text-align:center;color:yellow;background-color:black;">
+        This page is going to show for a moment.
+        If you see this permanently, please enable JavaScript and reload.
+        Otherwise it's possible to use any unsupported web browser.
+    </div>
+    <div style="text-align:center;color:yellow;background-color:black;">
+        現在、ページの構成中です。
+        もし、この表示が長時間表示されているなら、JavaScriptを有効にして再度読み込んでください。
+        サポート対象外のWebブラウザーを使っている場合も、これを表示し続けることがあります。
+    </div>
+</div>
+<div id="container" style="display: none">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">INTER-Mediator App.</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item  active">
+                        <a class="nav-link active" aria-current="page" href="../sample_page/index.html">Top</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item active" href="accounts.html">User Management</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="content">
+        <h1>Account Management</h1>
+        New Password: <input id="inputpassword" type="text"/>
+        Set the new password and click "Set" button on each user.
+        <div id="IM_NAVIGATOR">Navigation Controls by INTER-Mediator</div>
+        <h2>User Accounts</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Hashed Password</th>
+                <th>Email</th>
+                <th>Real Name</th>
+                <th>Groups</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input data-im="authuser@username" type="text"/>
+                </td>
+                <td>
+                    <input data-im="authuser@hashedpasswd" type="text"/>
+                    <button onclick="setPassword($)" class="btn btn-secondary"
+                            data-im="authuser@id@$onclick">Set
+                    </button>
+                </td>
+                <td>
+                    <input data-im="authuser@email" type="text"/>
+                </td>
+                <td>
+                    <input data-im="authuser@realname" type="text" size="10"/>
+                </td>
+                <td>
+            <span data-im-control="enclosure">
+                <div data-im-control="repeater">
+                <select data-im="belonggroup@dest_group_id">
+                    <option data-im="groupname@id@value|groupname@groupname"></option>
+                </select>
+                </div>
+            </span>
+                </td>
+                <!--<td><span data-im="authuser@belonging"></span></td>-->
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>Group Accounts</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Group Name</th>
+                <th>Groups</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input data-im="authgroup@groupname" type="text"/>
+                </td>
+                <td>
+            <span data-im-control="enclosure">
+                <span data-im-control="repeater">
+                <select data-im="groupingroup@dest_group_id">
+                    <option data-im="groupname@id@value|groupname@groupname"></option>
+                </select>
+                </span>
+            </span>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

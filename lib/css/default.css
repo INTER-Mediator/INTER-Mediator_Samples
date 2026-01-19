@@ -1,0 +1,15 @@
+.IM_NAV_insert_button {
+    font-size: 1.3em;
+}
+
+#_im_progress {
+    pointer-events: none;
+}
+
+.explain {
+    font-size: 80%;
+}
+
+#content {
+    margin: 0 8px;
+}
