@@ -1,7 +1,7 @@
 {
-  "name": "inter-mediator/imapp-template",
-  "version": "2",
-  "time": "2024-01-13",
+  "name": "inter-mediator/samples",
+  "version": "15",
+  "time": "2026-01-20",
   "repositories": [
     {
       "type": "git",
