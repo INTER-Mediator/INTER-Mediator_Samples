@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DB_ENGINE="mysql" # mysql or postgresql
-DB_NAME="imapp_db"
+DB_NAME="test_db"
 
 myDir=$(
   cd $(dirname "$0")
