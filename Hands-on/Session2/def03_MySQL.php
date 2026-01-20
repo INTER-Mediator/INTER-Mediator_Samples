@@ -1,6 +1,6 @@
 <?php
 //todo ## Set the valid path to the file 'INTER-Mediator.php'
-require_once('../../../INTER-Mediator/INTER-Mediator.php');
+require_once('../../INTER-Mediator/INTER-Mediator.php');
 
 IM_Entry(
     array(

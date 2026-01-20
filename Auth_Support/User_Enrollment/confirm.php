@@ -11,7 +11,7 @@
 
 use INTERMediator\DB\Proxy_ExtSupport;
 
-require_once('../../../vendor/inter-mediator/inter-mediator/INTER-Mediator.php');   // Set the valid path to INTER-Mediator.php
+require_once('../../vendor/inter-mediator/inter-mediator/INTER-Mediator.php');   // Set the valid path to INTER-Mediator.php
 
 class DBAccess
 {

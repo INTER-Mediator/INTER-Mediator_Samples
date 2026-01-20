@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-require_once('../../../vendor/inter-mediator/inter-mediator/INTER-Mediator.php');   // Set the valid path to INTER-Mediator.php
+require_once('../../vendor/inter-mediator/inter-mediator/INTER-Mediator.php');   // Set the valid path to INTER-Mediator.php
 
 IM_Entry(
     [
