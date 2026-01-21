@@ -4,7 +4,7 @@ by INTER-Mediator Directive Committee (https://inter-mediator.org)
 
 INTER-Mediator is the new style web application framework.
 You can develop easily and realize your ideals.
-You just describe table and field names in any HTML elements,
+You describe table and field names in any HTML elements,
 and these are bond to the database, showing values moreover automatically update with editing.
 If you want to implement more complex logic, you can write programs both client and server sides.
 
@@ -20,8 +20,8 @@ All information about INTER-Mediator can be available at:
 Everyone can see sample pages working with the database.
 You don't have to deploy the samples if you just want to see this at a glance.
 
-The demo with the latest version of INTER-Mediator is here:
-- https://demo.inter-mediator.com/IMApp_Trial/vendor/inter-mediator/inter-mediator/samples/
+The runnable version of the demo with the latest version of INTER-Mediator is here:
+- https://demo.inter-mediator.com/INTER-Mediator_Samples/
 
 ## How to let them work on
 
