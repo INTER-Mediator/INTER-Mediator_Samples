@@ -47,11 +47,24 @@ composer install
 composer update
 git clone https://github.com/INTER-Mediator/INTER-Mediator_Samples samples
 cd samples
-mkdir -p ../vendor/inter-mediator
-cd ../vendor/inter-mediator
+mkdir -p vendor/inter-mediator
+cd vendor/inter-mediator
 ln -s ../../../ inter-mediator
 ```
 
 The first 4 steps are the same as the installation of INTER-Mediator.
 After that, the samples are stored in the "samples" directory at the root of the INTER-Mediator repository.
 For sample files to refer to the valid files in the INTER-Mediator, one symbolic link has to be created.
+
+## How to work on an INTER-Mediator application
+
+```
+git clone <<Application Repository>>
+cd <<Application Repository>>
+composer install
+composer update
+cd vendor/inter-mediator
+ln -s ../ vendor
+```
+
+
