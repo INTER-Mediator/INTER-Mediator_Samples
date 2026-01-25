@@ -17,7 +17,7 @@
 setlocale(LC_ALL, 'ja_JP', 'ja');
 date_default_timezone_set('Asia/Tokyo');
 // The variable pathToIM has to point the INTER-Mediator directory.
-$pathToIM = "../../";   // Modify this to match your directories.
+$pathToIM = "../vendor/inter-mediator/inter-mediator";   // Modify this to match your directories.
 //---------------------------------------------
 
 require_once("{$pathToIM}/INTER-Mediator.php"); // Loading INTER-Mediator and relevant libraries.
