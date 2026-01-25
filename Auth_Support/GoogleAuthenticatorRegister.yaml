@@ -1,0 +1,19 @@
+contexts:
+  - name: authuser
+    key: id
+    records: 1
+    authentication:
+      all:
+        target: field-user
+        field: username
+    calculation:
+      - field: pkexist
+        expression: if(secret, 'inline-block', 'none')
+      - field: pknotexist
+        expression: if(!secret, 'inline-block', 'none')
+options:
+  authentication:
+    storing: credential
+connection:
+  db-class: PDO
+debug: 2
