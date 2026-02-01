@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INTER-Mediator:Google 2FA Demo</title>
+    <script src="Register.php"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@latest/build/qrcode.min.js"></script>
+    <script src="../../vendor/inter-mediator/inter-mediator/node_modules/inter-mediator-plugin-qrcode/index.js"></script>
+    <script>
+      INTERMediatorOnPage.doBeforeConstruct = function () {
+        INTERMediatorLog.isTrancateResponseText = true;
+      }
+
+      function register() {
+        IMLibAuthenticationUI.google2FARegistration((result) => {
+          console.log(result)
+        })
+      }
+    </script>
+</head>
+<body>
+<h1>Authenticator Registration</h1>
+<p>Here is your information.</p>
+<table>
+    <tr>
+        <th>id</th>
+        <td><span data-im="authuser@id"></span></td>
+    </tr>
+    <tr>
+        <th>username</th>
+        <td><span data-im="authuser@username"></span></td>
+    </tr>
+    <tr>
+        <th>realname</th>
+        <td><span data-im="authuser@realname"></span></td>
+    </tr>
+    <tr>
+        <th>secret</th>
+        <td>
+            <div data-im="authuser@secexist@style.display">
+                <div>Secret is already registered.</div>
+                <div>You can register.</div>
+                <div id="qrcode" data-im="authuser@qrcodeurl" data-im-widget="qrcode"></div>
+                If you want to unregister, click the button below.<br>
+                <button onclick="IMLibAuthenticationUI.google2FAUnregistration()">Unregister Secret from the Server</button>
+            </div>
+
+            <div data-im="authuser@secnotexist@style.display">
+                <div>Secret is not registered. If you want to register, click the button below.</div>
+                <button onclick="register()">Register Secret</button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>
+            <button onclick="IMLibAuthentication.logout();location.reload();">Logout</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
