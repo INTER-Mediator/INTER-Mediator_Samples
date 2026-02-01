@@ -9,9 +9,6 @@ class RegisterAddURL extends UseSharedObjects implements AfterRead
 {
     public function doAfterReadFromDB($result)
     {
-//        $secret = $google2fa->generateSecretKey();
-//        $userName = $this->proxyObject->paramAuthUser;
-//        [$uid, , , , $secret] = $this->proxyObject->dbClass->authHandler->getLoginUserInfo($userName);
         $qrCodeUrl = '';
         $secret = $result[0]['secret'] ?? '';
         if($secret) {
@@ -19,7 +16,6 @@ class RegisterAddURL extends UseSharedObjects implements AfterRead
             $google2fa = new Google2FA();
             $qrCodeUrl = $google2fa->getQRCodeUrl($serverName, $result[0]['username'], $secret);
         }
-//        $this->proxyObject->dbClass->authHandler->authSupportStore2FASecret($uid, $secret);
         $result[0]['qrcodeurl'] = $qrCodeUrl;
         return $result;
     }
