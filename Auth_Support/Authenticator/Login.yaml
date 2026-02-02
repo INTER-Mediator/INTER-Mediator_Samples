@@ -15,6 +15,7 @@ options:
   authentication:
     storing: credential
     is-required-2FA: true
+    digits-of-2FA-Code: 6
     method-2FA: authenticator
     is-pass-through-2FA: true
 connection:

@@ -13,8 +13,13 @@
 
       function register() {
         IMLibAuthenticationUI.google2FARegistration((result) => {
-          console.log(result)
+          location.reload();
         })
+      }
+
+      async function unregister() {
+        await IMLibAuthenticationUI.google2FAUnregistration()
+        location.reload();
       }
     </script>
 </head>
@@ -42,7 +47,7 @@
                 <div>You can register.</div>
                 <div id="qrcode" data-im="authuser@qrcodeurl" data-im-widget="qrcode"></div>
                 If you want to unregister, click the button below.<br>
-                <button onclick="IMLibAuthenticationUI.google2FAUnregistration()">Unregister Secret from the Server</button>
+                <button onclick="unregister()">Unregister Secret from the Server</button>
             </div>
 
             <div data-im="authuser@secnotexist@style.display">
