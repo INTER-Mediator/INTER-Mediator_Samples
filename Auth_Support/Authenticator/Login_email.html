@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INTER-Mediator:Authenticator Demo</title>
+    <script src="../../vendor/inter-mediator/inter-mediator/index.php"></script>
+</head>
+<body>
+<h1>Authenticator Login Demo</h1>
+<p>Here is your information.</p>
+<table>
+    <tr>
+        <th>id</th>
+        <td><span data-im="authuser@id"></span></td>
+    </tr>
+    <tr>
+        <th>username</th>
+        <td><span data-im="authuser@username"></span></td>
+    </tr>
+    <tr>
+        <th>realname</th>
+        <td><span data-im="authuser@realname"></span></td>
+    </tr>
+    <tr>
+        <th>publickey</th>
+        <td>
+            <span data-im="authuser@secexist@style.display">
+                Secret for Authenticator is already registered.<br>
+            </span>
+            <span data-im="authuser@secnotexist@style.display">
+                Secret for Authenticator is not registered.<br>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>
+            <button onclick="IMLibAuthentication.logout();location.reload();">Logout</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
