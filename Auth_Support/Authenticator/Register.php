@@ -26,7 +26,8 @@ IM_Entry(
             'calculation' => [
                 ['field' => 'secexist', 'expression' => "if(secret, 'inline-block', 'none')"],
                 ['field' => 'secnotexist', 'expression' => "if(!secret, 'inline-block', 'none')"],
-            ]
+            ],
+            'ignoring-field' => ['qrcodeurl'],
         ],
     ],
     ['authentication' => ['storing' => 'credential'],],
