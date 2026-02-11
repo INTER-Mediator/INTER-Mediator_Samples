@@ -1,0 +1,21 @@
+contexts:
+  - records: 1
+    name: authuser
+    key: id
+    extending-class: RegisterAddURL
+    authentication:
+      all:
+        target: field-user
+        field: username
+    calculation:
+      - field: secexist
+        expression: "if(secret, 'inline-block', 'none')"
+      - field: secnotexist
+        expression: "if(!secret, 'inline-block', 'none')"
+    ignoring-field: ["qrcodeurl"]
+options:
+  authentication:
+    storing: credential
+connection:
+  db-class: PDO
+debug: 2

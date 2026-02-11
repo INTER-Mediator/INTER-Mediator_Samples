@@ -1,0 +1,23 @@
+contexts:
+  - name: authuser
+    key: id
+    records: 1
+    authentication:
+      all:
+        target: field-user
+        field: username
+    calculation:
+      - field: secexist
+        expression: "if(secret, 'inline-block', 'none')"
+      - field: secnotexist
+        expression: "if(!secret, 'inline-block', 'none')"
+options:
+  authentication:
+    storing: credential
+    is-required-2FA: true
+    digits-of-2FA-Code: 4
+    method-2FA: email
+    is-pass-through-2FA: true
+connection:
+  db-class: PDO
+debug: 2

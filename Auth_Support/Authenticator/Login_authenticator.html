@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>INTER-Mediator:Passkey Demo</title>
-    <script src="../vendor/inter-mediator/inter-mediator/index.php"></script>
+    <title>INTER-Mediator:Authenticator Demo</title>
+    <script src="../../vendor/inter-mediator/inter-mediator/index.php"></script>
 </head>
 <body>
-<h1>Passkey Registration</h1>
+<h1>Authenticator Login Demo</h1>
 <p>Here is your information.</p>
 <table>
     <tr>
@@ -24,12 +24,11 @@
     <tr>
         <th>publickey</th>
         <td>
-            <span data-im="authuser@pkexist@style.display">
-                Passkey is already registered.<br>
+            <span data-im="authuser@secexist@style.display">
+                Secret for Authenticator is already registered.<br>
             </span>
-            <span data-im="authuser@pknotexist@style.display">
-                Passkey is not registered.<br>
-                <button onclick="IMLibAuthenticationUI.passkeyRegistration()">Register Passkey</button>
+            <span data-im="authuser@secnotexist@style.display">
+                Secret for Authenticator is not registered.<br>
             </span>
         </td>
     </tr>
