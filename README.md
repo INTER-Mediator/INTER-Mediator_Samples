@@ -63,8 +63,8 @@ git clone <<Application Repository>>
 cd <<Application Repository>>
 composer install
 composer update
-cd vendor/inter-mediator
-ln -s ../ vendor
+cd vendor/inter-mediator/samples
+ln -s ../../ vendor
 ```
 
 
