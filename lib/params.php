@@ -143,12 +143,12 @@ $suppressDefaultValuesOnCopy = true; // If you don't want to set default values 
  * Port number and host name for service server */
 $notUseServiceServer = false;  // Default is FALSE!. If it sets to true, every feature with Service Server don't work.
 $activateClientService = true;  // Default is TRUE!!.
-$serviceServerProtocol = "ws";  // The Service Server url components to connect from client.
-$serviceServerHost = "";    // "" for public ip address.
+$serviceServerProtocol = "wss";  // The Service Server url components to connect from client.
+$serviceServerHost = "demo.inter-mediator.com";    // "" for public ip address.
 $serviceServerPort = "11478";
-$serviceServerKey = "";  // Path of Key file for wss protocol **** wss protocol doesn't work so far.
-$serviceServerCert = ""; // Path of Cert file for wss protocol
-$serviceServerCA = ""; // Path of CA file for wss protocol
+$serviceServerKey = "/var/www/demo_cert/privkey.pem";  // Path of Key file for wss protocol **** wss protocol doesn't work so far.
+$serviceServerCert = "/var/www/demo_cert/cert.pem"; // Path of Cert file for wss protocol
+$serviceServerCA = "/var/www/demo_cert/chain.pem"; // Path of CA file for wss protocol
 $serviceServerConnect = "http://localhost"; // The Service Server host name to connect from the INTER-Mediator server
 $stopSSEveryQuit = false;
 $bootWithInstalledNode = false;
