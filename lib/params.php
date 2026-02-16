@@ -141,8 +141,8 @@ $suppressDefaultValuesOnCopy = true; // If you don't want to set default values 
 /* Service Server Behavior
  * ===================
  * Port number and host name for service server */
-$notUseServiceServer = true;  // Default is FALSE!. If it sets to true, every feature with Service Server don't work.
-$activateClientService = false;  // Default is TRUE!!.
+$notUseServiceServer = false;  // Default is FALSE!. If it sets to true, every feature with Service Server don't work.
+$activateClientService = true;  // Default is TRUE!!.
 $serviceServerProtocol = "ws";  // The Service Server url components to connect from client.
 $serviceServerHost = "";    // "" for public ip address.
 $serviceServerPort = "11478";
