@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DB_ENGINE="mysql" # mysql or postgresql
 DB_NAME="test_db"
