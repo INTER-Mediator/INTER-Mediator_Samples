@@ -37,7 +37,7 @@ $dbOption = array();
  *  $webServerName = array('www.inter-mediator.com');
  *  $webServerName = array('inter-mediator.com', 'example.jp');
  */
-$webServerName = array('');
+$webServerName = array('demo.inter-mediator.com');
 
 /* Customize the X-Frame-Options header
  *
@@ -46,7 +46,7 @@ $webServerName = array('');
  * If you don't specify the $xFrameOptions variable, the header will be included
  * with value "SAMEORIGIN".
  */
-//$xFrameOptions = "SAMEORIGIN";
+$xFrameOptions = "SAMEORIGIN";
 
 /* Customize the Content-Security-Policy header
  *
@@ -55,7 +55,7 @@ $webServerName = array('');
  * See below about Content-Security-Policy header.
  * https://developer.mozilla.org/ja/docs/Web/Security/CSP/Using_Content_Security_Policy
  */
-//$contentSecurityPolicy = "";
+$contentSecurityPolicy = "default-src 'self'";
 
 /* Append the Access-Control-Allow-Origin header
  * This header will be appended other server url than the origin.
