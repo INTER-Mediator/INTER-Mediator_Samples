@@ -16,6 +16,8 @@ INTERMediatorOnPage.doBeforeConstruct = function () {
   INTERMediatorLog.errorMessageByAlert = true
   INTERMediatorOnPage.progressStartDelay = 0
   INTERMediatorOnPage.includingParts["page_footer"] = "<small>INTER-Mediator ©2024</small>"
+  // INTERMediator.navigationLabel = [null, null, null, null, null, null, null, null, "更新", null, null, null];
+
 }
 
 INTERMediatorOnPage.doAfterConstruct = function () {
