@@ -1,7 +1,7 @@
 {
   "contexts": [
     {
-      "records": 3,
+      "records": 2,
       "maxrecords": 3,
       "name": "productlist",
       "view": "product",
@@ -13,6 +13,7 @@
         }
       ],
       "navi-control": "master-hide",
+      "repeat-control": "insert delete",
       "paging": true
     },
     {

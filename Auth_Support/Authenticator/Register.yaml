@@ -16,6 +16,7 @@ contexts:
 options:
   authentication:
     storing: credential
+    is-required-2FA: false
 connection:
   db-class: PDO
 debug: 2
