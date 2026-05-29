@@ -1,18 +1,12 @@
 {
   "name": "inter-mediator/samples",
   "version": "15",
-  "time": "2026-01-20",
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/msyk/INTER-Mediator.git"
-    }
-  ],
+  "time": "2026-05-29",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": ">=7.4.0",
-    "inter-mediator/inter-mediator": "dev-master"
+    "php": ">=8.1.0",
+    "inter-mediator/inter-mediator": "15"
   },
   "autoload": {},
   "description": "INTER-Mediator Application Template.",
@@ -46,13 +40,13 @@
       "cd ./vendor/inter-mediator/inter-mediator && rm -rf node_module"
     ],
     "post-update-cmd": [
-      "cd ./vendor/inter-mediator/inter-mediator; npm install",
+      "cd ./vendor/inter-mediator/inter-mediator; npm ci",
       "cd ./vendor/inter-mediator/inter-mediator; npm update",
       "./vendor/inter-mediator/inter-mediator/dist-docs/generateminifyjshere.sh",
       "./lib/doafterupdate.sh"
     ],
     "post-install-cmd": [
-      "cd ./vendor/inter-mediator/inter-mediator; npm install",
+      "cd ./vendor/inter-mediator/inter-mediator; npm ci",
       "./vendor/inter-mediator/inter-mediator/dist-docs/generateminifyjshere.sh",
       "./lib/doafterinstall.sh"
     ]
