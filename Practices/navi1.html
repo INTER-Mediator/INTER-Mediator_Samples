@@ -21,6 +21,29 @@
 <!--    <script type="text/javascript" src="../../vendor/inter-mediator/inter-mediator/index.php?deffile=practice-navi1.yml"></script>-->
     <script type="text/javascript" src="../vendor/inter-mediator/inter-mediator/index.php"></script>
 <!--    <script type="text/javascript" src="navi1_yaml.php"></script>-->
+    <script>
+      INTERMediatorOnPage.doAfterCreateRecord = (newId, contextName) => {
+        if (contextName == 'productlist') {
+          IMLibPageNavigation.moveDetail('id=' + newId)
+        }
+      }
+
+      function createNewItem() {
+        IMLibQueue.setTask((complete) => {
+          const contextName = 'productdetail' // レコードを新規に作成するコンテキストの名前
+          const data = [] // フィールドの既定値をカスタマイズしたい場合に指定
+          INTERMediator_DBAdapter.db_createRecord_async({name: contextName, dataset: data},
+            (result) => {
+            console.log(result)
+              const id = result.newRecordKeyValue
+              IMLibPageNavigation.moveDetail('id=' + id)
+              complete()
+            }, () => {
+              complete()
+            })
+        })
+      }
+    </script>
 </head>
 <body>
 <header>
@@ -37,6 +60,7 @@
                 <th></th>
                 <th>name</th>
                 <th>unitprice</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -45,6 +69,7 @@
                 <td data-im="productlist@name"></td>
                 <td style="text-align: right" data-im="productlist@unitprice"
                     data-im-format="number(0)" data-im-format-options="useseparator"></td>
+                <td></td>
             </tr>
             </tbody>
         </table>
@@ -53,7 +78,10 @@
     <div id="detailarea">
         <table>
             <thead>
-            <tr><td colspan="2">Detail of the Product</td></tr>
+            <tr><td colspan="2">
+                Detail of the Product
+                <button onclick="createNewItem()">Create New Item</button>
+            </td></tr>
             </thead>
             <tbody>
             <tr>

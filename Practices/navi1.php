@@ -25,6 +25,7 @@ IM_Entry(
             'key' => 'id',
             'sort' => [['field' => 'name', 'direction' => 'ASC'],],
             'navi-control' => 'master-hide',
+            "repeat-control" => "confirm-insert confirm-delete",
             'paging' => true,
         ],
         [
