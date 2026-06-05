@@ -38,18 +38,10 @@
       "The software test is very important activity for the quality assuarance."
     ],
     "clear": [
-      "rm -rf vendor",
-      "cd ./vendor/inter-mediator/inter-mediator && rm -rf node_module"
+      "INTERMediator\\Composer\\InstallerPlugin::onClear"
     ],
     "clean": [
-      "rm -rf vendor",
-      "cd ./vendor/inter-mediator/inter-mediator && rm -rf node_module"
-    ],
-    "post-update-cmd": [
-      "./lib/doafterupdate.sh"
-    ],
-    "post-install-cmd": [
-      "./lib/doafterinstall.sh"
+      "INTERMediator\\Composer\\InstallerPlugin::onClear"
     ]
   },
   "config": {
