@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2f0d9d7e0b506ce3eda7e475c977c86",
+    "content-hash": "33da575abbe332e6da529e19db56dcc0",
     "packages": [
         {
             "name": "async-aws/core",
@@ -195,16 +195,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.384.3",
+            "version": "3.384.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9d3538b3f113cd66b3220f7e37e3d0ff1e0713e7"
+                "reference": "8e232a5703896541a7a34691a41ece5bd6170269"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9d3538b3f113cd66b3220f7e37e3d0ff1e0713e7",
-                "reference": "9d3538b3f113cd66b3220f7e37e3d0ff1e0713e7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8e232a5703896541a7a34691a41ece5bd6170269",
+                "reference": "8e232a5703896541a7a34691a41ece5bd6170269",
                 "shasum": ""
             },
             "require": {
@@ -286,9 +286,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.384.3"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.384.4"
             },
-            "time": "2026-06-04T18:11:21+00:00"
+            "time": "2026-06-05T18:05:57+00:00"
         },
         {
             "name": "brick/math",
@@ -1329,18 +1329,17 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/msyk/INTER-Mediator.git",
-                "reference": "43a45cc4349fa0ae86c9c019e591abc1b7e4ca2b"
+                "url": "https://github.com/INTER-Mediator/INTER-Mediator.git",
+                "reference": "73ddff77081cc053a33a301d95288c4f4a9e5e1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msyk/INTER-Mediator/zipball/43a45cc4349fa0ae86c9c019e591abc1b7e4ca2b",
-                "reference": "43a45cc4349fa0ae86c9c019e591abc1b7e4ca2b",
+                "url": "https://api.github.com/repos/INTER-Mediator/INTER-Mediator/zipball/73ddff77081cc053a33a301d95288c4f4a9e5e1f",
+                "reference": "73ddff77081cc053a33a301d95288c4f4a9e5e1f",
                 "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": ">=3",
-                "composer-plugin-api": "^2.0",
                 "ext-curl": "*",
                 "ext-exif": "*",
                 "ext-gd": "*",
@@ -1349,10 +1348,12 @@
                 "ext-libxml": "*",
                 "ext-mbstring": "*",
                 "ext-pdo": "*",
+                "ext-posix": "*",
                 "ext-xml": "*",
                 "inter-mediator/fmdataapi": ">=36",
                 "league/csv": ">=9",
                 "matthiasmullie/minify": ">=1.3",
+                "mouf/nodejs-installer": ">=1",
                 "msyk/dropbox-api-shortlivedtoken": ">=5",
                 "php": ">=8.1",
                 "pragmarx/google2fa": "^9",
@@ -1367,46 +1368,25 @@
                 "web-token/jwt-framework": ">=3.4"
             },
             "require-dev": {
-                "composer/composer": "^2.6",
                 "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^10 || ^11"
             },
             "default-branch": true,
-            "type": "composer-plugin",
+            "type": "library",
             "extra": {
-                "class": "INTERMediator\\Composer\\InstallerPlugin"
+                "mouf": {
+                    "nodejs": {
+                        "version": "^24",
+                        "includeBinInPath": true
+                    }
+                }
             },
             "autoload": {
                 "psr-4": {
                     "INTERMediator\\": "src/php"
                 }
             },
-            "scripts": {
-                "phpstan": [
-                    "./vendor/bin/phpstan analyse -c ./spec/phpstan.neon  --memory-limit=2048M"
-                ],
-                "test": [
-                    "./vendor/bin/phpunit --bootstrap ./vendor/autoload.php --configuration ./spec/INTER-Mediator-UnitTest/phpunit.xml"
-                ],
-                "test-fms": [
-                    "./vendor/bin/phpunit --bootstrap ./vendor/autoload.php --configuration ./spec/INTER-Mediator-UnitTest/phpunit-fms.xml --process-isolation"
-                ],
-                "jest": [
-                    "./node_modules/.bin/jest --config ./spec/jest-test-suite/jest.config.js"
-                ],
-                "wdio-test": [
-                    "cd spec/run;npm run wdio"
-                ],
-                "clear": [
-                    "INTERMediator\\Composer\\InstallerPlugin::onClear"
-                ],
-                "post-install-cmd": [
-                    "INTERMediator\\Composer\\InstallerPlugin::onPostInstallCmd"
-                ],
-                "post-update-cmd": [
-                    "INTERMediator\\Composer\\InstallerPlugin::onPostUpdateCmd"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1425,15 +1405,16 @@
                 "rapid-development"
             ],
             "support": {
-                "community-jp": "https://www.facebook.com/groups/233378356708157/",
                 "community-en": "https://www.facebook.com/groups/254446237922985/",
-                "source": "https://github.com/INTER-Mediator/INTER-Mediator",
-                "manual": "https://inter-mediator.info/"
+                "community-jp": "https://www.facebook.com/groups/233378356708157/",
+                "issues": "https://github.com/INTER-Mediator/INTER-Mediator/issues",
+                "manual": "https://inter-mediator.info/",
+                "source": "https://github.com/INTER-Mediator/INTER-Mediator"
             },
             "funding": [
                 {
-                    "type": "github",
-                    "url": "https://github.com/msyk"
+                    "url": "https://github.com/msyk",
+                    "type": "github"
                 }
             ],
             "time": "2026-05-10T00:00:00+00:00"
@@ -1651,6 +1632,67 @@
                 "source": "https://github.com/matthiasmullie/path-converter/tree/1.1.3"
             },
             "time": "2019-02-05T23:41:09+00:00"
+        },
+        {
+            "name": "mouf/nodejs-installer",
+            "version": "v1.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thecodingmachine/nodejs-installer.git",
+                "reference": "8b26f6893698f057b2c97b6bbf1a0cd12c2343e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thecodingmachine/nodejs-installer/zipball/8b26f6893698f057b2c97b6bbf1a0cd12c2343e9",
+                "reference": "8b26f6893698f057b2c97b6bbf1a0cd12c2343e9",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "ext-openssl": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.7",
+                "phpunit/phpunit": "^7.4"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "mouf": {
+                    "logo": "node-js.png"
+                },
+                "class": [
+                    "Mouf\\NodeJsInstaller\\NodeJsPlugin"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mouf\\NodeJsInstaller\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "An installer package that let's you install NodeJS and NPM as a Composer dependency.",
+            "homepage": "http://mouf-php.com/packages/mouf/nodejs-installer",
+            "keywords": [
+                "installer",
+                "nodejs",
+                "npm"
+            ],
+            "support": {
+                "issues": "https://github.com/thecodingmachine/nodejs-installer/issues",
+                "source": "https://github.com/thecodingmachine/nodejs-installer/tree/v1.0.14"
+            },
+            "time": "2020-11-04T08:03:55+00:00"
         },
         {
             "name": "msyk/dropbox-api-shortlivedtoken",
