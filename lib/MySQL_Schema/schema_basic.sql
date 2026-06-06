@@ -306,20 +306,21 @@ CREATE TABLE registeredpks
 CREATE TABLE authuser
 (
     id                    INT AUTO_INCREMENT, # Primary key field for this table
-    username              VARCHAR(100),       #    The username which user enters,   This should be unique
-    hashedpasswd          VARCHAR(72),        #    The hash of password
-    realname              VARCHAR(100),       #    The real name
-    email                 VARCHAR(100),       #    The email address
-    address               VARCHAR(200),       #    The real address
-    birthdate             CHAR(8),            #    My Number Card
-    gender                CHAR(1),            #    My Number Card
-    sub                   VARCHAR(255),       # For OAuth2, My   Number Card
-    limitdt               DATETIME,           #    The limit for continuing authentication on SAML/OAuth2
-    initialPassword       VARCHAR(30),        #    Storing for the initial password
+    username              VARCHAR(100),       # The username that user enters, This should be unique
+    hashedpasswd          VARCHAR(72),        # The hash of password
+    realname              VARCHAR(100),       # The real name
+    email                 VARCHAR(100),       # The email address
+    address               VARCHAR(200),       # The real address
+    birthdate             CHAR(8),            # My Number Card
+    gender                CHAR(1),            # My Number Card
+    sub                   VARCHAR(255),       # For OAuth2, My Number Card
+    limitdt               DATETIME,           # The limit for continuing authentication on SAML/OAuth2
+    initialPassword       VARCHAR(30),        # Storing for the initial password
     publicKey             TEXT,               # For Passkey Authentication
     publicKeyCredentialId TEXT,               # For Passkey Authentication
     secret                TEXT,               # For Google Authenticator
-    accessToken           VARCHAR(64),        # For API, the  length depends on your implementation.
+    accessToken           VARCHAR(64),        # For API, the length depends on your implementation.
+    inactive              BOOLEAN,            # Inhibit to log in.
     PRIMARY KEY (id)
 ) CHARACTER SET utf8mb4,
   COLLATE utf8mb4_unicode_ci
@@ -411,6 +412,24 @@ CREATE INDEX issuedhash_clienthost
     ON issuedhash (clienthost);
 CREATE INDEX issuedhash_user_id_clienthost
     ON issuedhash (user_id, clienthost);
+
+# Collecting failed login information.
+CREATE TABLE authfail
+(
+    id       INT AUTO_INCREMENT,
+    dt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ip       VARCHAR(39),
+    username VARCHAR(64),
+    tw       INT,
+    PRIMARY KEY (id)
+) CHARACTER SET utf8mb4,
+  COLLATE utf8mb4_unicode_ci
+  ENGINE = InnoDB;
+
+CREATE INDEX authfail_dt ON authfail (dt);
+CREATE INDEX authfail_ip ON authfail (ip);
+CREATE INDEX authfail_tw ON authfail (tw);
+CREATE INDEX authfail_username ON authfail (username);
 
 # Mail Template
 

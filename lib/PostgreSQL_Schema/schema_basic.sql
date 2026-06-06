@@ -291,7 +291,8 @@ CREATE TABLE authuser
     publicKey             TEXT,
     publicKeyCredentialId TEXT,
     secret                TEXT,
-    accessToken           VARCHAR(64)
+    accessToken           VARCHAR(64),
+    inactive              BOOLEAN
 );
 CREATE INDEX authuser_username ON authuser (username);
 CREATE INDEX authuser_email ON authuser (email);
@@ -349,6 +350,22 @@ CREATE INDEX issuedhash_expired ON issuedhash (expired);
 CREATE INDEX issuedhash_clienthost ON issuedhash (clienthost);
 CREATE INDEX issuedhash_user_id_clienthost ON issuedhash (user_id, clienthost);
 GRANT ALL PRIVILEGES ON im_sample.issuedhash_id_seq TO web;
+
+-- Collecting failed login information.
+CREATE TABLE authfail
+(
+    id       SERIAL PRIMARY KEY ,
+    dt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ip       TEXT,
+    username TEXT,
+    tw       INT
+);
+
+CREATE INDEX authfail_dt ON authfail (dt);
+CREATE INDEX authfail_ip ON authfail (ip);
+CREATE INDEX authfail_username ON authfail (username);
+CREATE INDEX authfail_tw ON authfail (tw);
+GRANT ALL PRIVILEGES ON im_sample.authfail_id_seq TO web;
 
 /* Mail Template */
 CREATE TABLE mailtemplate
