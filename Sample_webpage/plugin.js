@@ -1,9 +1,15 @@
-import {Uppy, Dashboard, ImageEditor, Compressor, XHRUpload} from "https://releases.transloadit.com/uppy/v5.2.1/uppy.min.mjs"
+import {
+  Uppy,
+  Dashboard,
+  ImageEditor,
+  Compressor,
+  XHRUpload
+} from "https://releases.transloadit.com/uppy/v5.2.1/uppy.min.mjs"
 // import Japanese from "https://releases.transloadit.com/uppy/locales/v3.3.1/ja_JP.min.js"
 // import '@uppy/core/css/style.min.css';
 // import '@uppy/dashboard/css/style.min.css';
 
-const Japanese =  {
+const Japanese = {
   strings: {
     // browse: 'выберите ;-)',
     dropPasteBoth: 'ここにファイルをドロップするか、貼り付けるか、%{browse}してください',
@@ -58,7 +64,7 @@ IMParts_Catalog.uppy = {
       const uppy = new Uppy({locale: Japanese})
       const options = {...IMParts_Catalog.uppy.optionsSeed}
       options.target = `#${targetId}`
-      options.locale= Japanese
+      options.locale = Japanese
       uppy.use(Dashboard, options)
       if (IMParts_Catalog.uppy.useImageEditor) {
         uppy.use(ImageEditor, {target: Dashboard})
@@ -67,10 +73,62 @@ IMParts_Catalog.uppy = {
         uppy.use(Compressor)
       }
       uppy.use(XHRUpload, {
-        endpoint: "https://localhost/",
+        endpoint: INTERMediatorOnPage.getEntryPath() + '?access=uploadfile',
+        method: "post",
+        formData: true,
         limit: 6,
         bundle: true,
+        allowedMetaFields: [''],
+        // Called again for every retry too.
+        async onBeforeRequest(xhr) {
+          const cInfo = IMLibContextPool.getContextInfoFromId(targetId, '')
+          const keyValue = cInfo.record.split('=')
+          const metaData = {
+            access: 'uploadfile',
+            _im_contextnewrecord: 'uploadfile',
+            _im_contextname: cInfo.context.contextName,
+            _im_field: cInfo.field,
+            _im_keyfield: keyValue[0],
+            _im_keyvalue: keyValue[1],
+            authuser: IMLibAuthentication.authUser()
+          }
+          if (IMLibAuthentication.authUser() && IMLibAuthentication.authUser().length > 0) {
+            metaData['clientid'] = IMLibAuthentication.clientId()
+
+            if ((IMLibAuthentication.authHashedPassword()
+                || IMLibAuthentication.authHashedPassword2m()
+                || IMLibAuthentication.authHashedPassword2())
+              && IMLibAuthentication.authChallenge) {
+              if (IMLibAuthentication.passwordHash < 1.1 && IMLibAuthentication.authHashedPassword()) {
+                const shaObj = new jsSHA('SHA-256', 'TEXT')
+                shaObj.setHMACKey(IMLibAuthentication.authChallenge, 'TEXT')
+                shaObj.update(IMLibAuthentication.authHashedPassword())
+                metaData['response'] = shaObj.getHMAC('HEX')
+              }
+              if (IMLibAuthentication.passwordHash < 1.6 && IMLibAuthentication.authHashedPassword2m()) {
+                const shaObj = new jsSHA('SHA-256', 'TEXT')
+                shaObj.setHMACKey(IMLibAuthentication.authChallenge, 'TEXT')
+                shaObj.update(IMLibAuthentication.authHashedPassword2m())
+                metaData['response2m'] = shaObj.getHMAC('HEX')
+              }
+              if (IMLibAuthentication.passwordHash < 2.1 && IMLibAuthentication.authHashedPassword2()) {
+                const shaObj = new jsSHA('SHA-256', 'TEXT')
+                shaObj.setHMACKey(IMLibAuthentication.authChallenge, 'TEXT')
+                shaObj.update(IMLibAuthentication.authHashedPassword2())
+                metaData['response2'] = shaObj.getHMAC('HEX')
+              }
+            }
+            // file.id -> targetId
+            uppy.setFileMeta(targetId, metaData);
+          }
+        },
+        async onAfterResponse(xhr) {
+          if (xhr.status === 401) {
+            token = await getAuthToken();
+          }
+        }
       })
+
       /*
 
 
