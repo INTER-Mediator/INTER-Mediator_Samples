@@ -12,6 +12,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>INTER-Mediator - Sample - Uploading a file / MySQL</title>
     <!-- Loading Uppy -->
     <link href="https://cdn.jsdelivr.net/npm/uppy@5.2.4/dist/uppy.min.css" rel="stylesheet">
@@ -19,6 +20,9 @@
     <!-- Loading INTER-Mediator -->
     <script src="../vendor/inter-mediator/inter-mediator/index.php"></script>
     <script type="module" src="../vendor/inter-mediator/inter-mediator/node_modules/inter-mediator-plugin-uppy/index.js"></script>
+    <script type="text/javascript">
+      // INTERMediatorLog.errorMessageByAlert = true
+    </script>
 </head>
 <body>
 <header>
@@ -28,13 +32,26 @@
     <div class="container">
         <h1>JavaScript Component Test for jQuery File Upload</h1>
         <p>This sample requires jQuery File Upload.</p>
-        <div data-im-widget="jquery_fileupload"></div>
-        <table>
+
+        <div data-im-control="post enclosure" style="padding: 10px;margin: 10px 0; border:gray 2px solid">
+            <div data-im-control="repeater">
+                <div>Here is the post only mode area with the context named 'testtable'.</div>
+                <div>After sending files, it doesn't redraw the page for checking log.</div>
+                <label>Message: <input type="text" data-im="testtable@vc3"></label>
+                <div style="display: flex">
+                    <span data-im="testtable@text1" data-im-widget="uppy"></span>
+                    <span data-im="testtable@text2" data-im-widget="uppy"></span>
+                </div>
+                <button data-im-control="post">送信</button>
+            </div>
+        </div>
+        <table style="width: 100%;max-width: 100%">
             <thead>
             <tr>
                 <th>Date and Time</th>
+                <th>File Path</th>
+                <th>File Path</th>
                 <th>Message</th>
-                <th></th>
                 <th>History</th>
                 <th></th>
             </tr>
@@ -42,24 +59,28 @@
             <tbody>
             <tr>
                 <td>
-                    <div data-im="testtable@dt1" data-im-format="DateTime(long)"></div>
-                    <div data-im="testtable@vc1"></div>
+                    <div data-im="testtable@dt1"></div>
                 </td>
-                <td data-im="testtable@vc1" data-im-widget="uppy"></td>
-                <!--                <td><img src="Calc_Lookup_MySQL.yaml?media=" data-im="testtable@vc1@#src" style="width: 60px"></td>-->
-                <td>
+                <td style="width: 300px;max-width: 300px">
+                    <div data-im="testtable@text1"></div>
                     <img src="../vendor/inter-mediator/inter-mediator/index.php?deffile=./vendor/inter-mediator/inter-mediator/samples/Sample_webpage/fileupload_jQuery_MySQL.yml&media="
-                         data-im="testtable@vc1@#src" style="width: 60px">
+                         data-im="testtable@text1@#src" style="width: 60px">
                     [<img
                         src="../vendor/inter-mediator/inter-mediator/index.php?deffile=./samples/Sample_webpage/fileupload_jQuery_MySQL.yml&media="
-                        data-im="testtable@vc1@#src" style="width: 60px">]
+                        data-im="testtable@text1@#src" style="width: 60px">]
+
                 </td>
+                <td style="width: 300px;max-width: 300px">
+                    <div data-im="testtable@text2" data-im-widget="uppy"></div>
+                    <div data-im="testtable@text2"></div>
+                    <img src="include_MySQL.php?media=" data-im="testtable@text2@#src" style="max-width: 100px">
+                </td>
+                <td data-im="testtable@vc3" style="max-width: 300px"></td>
                 <td>
                     <table>
                         <tbody>
                         <tr>
-                            <td data-im="fileupload@path"></td>
-                            <td>
+                            <td><div data-im="fileupload@path"></div>
                                 <img src="../vendor/inter-mediator/inter-mediator/index.php?deffile=./vendor/inter-mediator/inter-mediator/samples/Sample_webpage/fileupload_jQuery_MySQL.yml&media="
                                      data-im="fileupload@path@#src" style="width: 60px">
                                 [<img

@@ -6,7 +6,9 @@ contexts:
       - field: dt1
         direction: desc
     file-upload:
-      - field: vc1
+      - field: text1
+        context: fileupload
+      - field: text2
         context: fileupload
 #        file-name: test@@id@@(@@dt1@@)
 #        container: FileURL
