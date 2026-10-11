@@ -1,12 +1,14 @@
 <?php
 
+use INTERMediator\DB\Support\ProtocolProcessing;
+
 /**
  * Created by PhpStorm.
  * User: msyk
  * Date: 14/08/22
  * Time: 14:10
  */
-class PDFSample
+class PDFSample implements ProtocolProcessing
 {
 
     public function processing(array $contextData, ?array $options): void
