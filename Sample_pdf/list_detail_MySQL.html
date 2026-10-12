@@ -14,8 +14,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>INTER-Mediator - Sample - List-Detail Style Navigation/MySQL</title>
-<!--    <script type="text/javascript" src="contexts_MySQL.php"></script>-->
-    <script type="text/javascript" src="../../vendor/inter-mediator/inter-mediator/index.php"></script>
+    <script type="text/javascript" src="contexts_MySQL.php"></script>
+<!--    <script type="text/javascript" src="../vendor/inter-mediator/inter-mediator/index.php"></script>-->
 </head>
 <body>
 <h1>Product List with PDF Generating</h1>
@@ -37,7 +37,7 @@
             <td class="price" data-im="productlist@unitprice"></td>
             <td>
                 <img width="30" src="../Sample_products/images/" data-im="productlist@photofile@#src">
-                <a data-im="productlist@ack_link@href|productlist@acknowledgement"></a>
+                <a data-im="productlist@ack_link@href productlist@acknowledgement"></a>
             </td>
         </tr>
         </tbody>
