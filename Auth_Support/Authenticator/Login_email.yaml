@@ -15,7 +15,7 @@ options:
   authentication:
     storing: credential
     is-required-2FA: true
-    digits-of-2FA-Code: 4
+    digits-of-2FA-code: 4
     method-2FA: email
     is-pass-through-2FA: true
 connection:
