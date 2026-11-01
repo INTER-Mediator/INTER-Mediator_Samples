@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <th>issued</th>
-        <td><input type="text" data-im="invoice@issued" value=""></td>
+        <td><input type="text" data-im="invoice@issued" data-im-format="date(short)"></td>
       </tr>
       <tr>
         <th>title</th>
@@ -65,14 +65,19 @@
                   </td>
                 <td><input class="price" type="text" data-im="item@qty" size="5"></td>
                 <td>
-                  <input class="price" type="text" data-im="item@product_unitprice" size="8">
+                  <input class="price" type="text" data-im="item@product_unitprice" size="8"
+                         data-im-format="number" data-im-format-options="useseparator">
                   <div class="inline" data-im-control="enclosure">
                     <div class="inline price" data-im-control="repeater">
-                      (<span data-im="product@unitprice"></span>)
+                      (<span data-im="product@unitprice" data-im-format="number"
+                             data-im-format-options="useseparator"></span>)
                       </div>
                     </div>
                   </td>
-                <td align="right"><span align="right" data-im="item@amount_calc"></span></td>
+                <td align="right">
+                  <span align="right" data-im="item@amount_calc" data-im-format="number"
+                        data-im-format-options="useseparator"></span>
+                </td>
                 <td></td>
               </tr>
               </tbody>
@@ -85,7 +90,7 @@
       </tr>
       <tr>
         <th>Total:</th>
-        <td data-im="invoice@total_calc"></td>
+        <td data-im="invoice@total_calc" data-im-format="number" data-im-format-options="useseparator"></td>
       </tr>
       </tbody>
   </table>

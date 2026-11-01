@@ -28,7 +28,7 @@ IM_Entry(
             'sync-control' => 'create update delete',
             'calculation' => [[
                 'field' => 'total_calc',
-                'expression' => 'format(sum(item@amount_calc) * (1 + _@taxRate ))',
+                'expression' => 'sum(item@amount_calc) * (1 + _@taxRate )',
             ],],
         ],
         [
@@ -59,30 +59,7 @@ IM_Entry(
             'relation' => [['foreign-key' => 'id', 'join-field' => 'product_id', 'operator' => '='],],
         ],
     ],
-    [
-        'formatter' => [
-            [
-                'field' => 'invoice@issued',
-                'converter-class' => 'FMDateTime',
-                'parameter' => '%Y-%m-%d'
-            ],
-            [
-                'field' => 'item@qty',
-                'converter-class' => 'NullZeroString',
-                'parameter' => '0'
-            ],
-            [
-                'field' => 'item@unitprice',
-                'converter-class' => 'NullZeroString',
-                'parameter' => '0'
-            ],
-            [
-                'field' => 'product@unitprice',
-                'converter-class' => 'Number',
-                'parameter' => '2'
-            ],
-        ],
-    ],
+    [],
     ['db-class' => 'PDO'],
     2
 );
